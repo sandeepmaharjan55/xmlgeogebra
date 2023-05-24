@@ -1,3 +1,5 @@
+package src;
+
 import java.io.*;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -106,7 +108,7 @@ public class FileIO {
 
                     //append element tag
                     (root.getElementsByTagName("construction").item(0)).appendChild(newElement);
-                    System.out.println("Print polygon vertices "+ j);
+                    //System.out.println("Print polygon vertices "+ j);
 
                 }
                 //command
@@ -195,10 +197,13 @@ public class FileIO {
                                     String xCoordinateNew = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
                                     String yCoordinateNew = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
                                     polygonList.add(p);
+                                    System.out.println(p.xCords+" "+p.yCords);
                                     p = new MyPolygon((int) (Float.parseFloat(xCoordinateNew)), (720 - (int) (Float.parseFloat(yCoordinateNew))));
                                     p.xCords.remove(0);
                                     p.yCords.remove(0);
+
                                 }
+
                             }
                         }
                     }
@@ -215,114 +220,113 @@ public class FileIO {
 
     public static void main(String[] args) {
         FileIO f = new FileIO("test");
-
-        try {
-            // Reading XML file
-            File inputFile = new File("./geogebra/geogebra4.xml");
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(inputFile);
-
-            // Accessing root element
-            Element root = document.getDocumentElement();
-            // System.out.println("Rootname: " + root.toString());
-
-            // Reading data from XML
-            NodeList nodeList = root.getElementsByTagName("construction");
-            //double[][] intArray = new double[20][20];
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
-                for (int j = 0; j < elems.getLength(); j++) {
-                    Element polygonElement = ((Element) elems.item(j));
-                    Node polygonElementNode = elems.item(j);
-                    if (polygonElementNode.getNodeType() == Node.ELEMENT_NODE) {
-                        if (polygonElement.getAttribute("type").equals("point")) {
-                            Element polygonElementN = ((Element) polygonElementNode);
-                            String label = polygonElement.getAttribute("label");
-                            String xCoordinate = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
-                            String yCoordinate = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
-                            String polygonNameData = "";
-                            String polyType = "";
-
-                            NodeList commandPol = ((Element) nodeList.item(i)).getElementsByTagName("command");
-                            for (int k = 0; k < commandPol.getLength(); k++) {
-                                Element polygonCommand = ((Element) commandPol.item(k));
-                                int lengthOutputCommand = polygonCommand.getElementsByTagName("output").item(0).getAttributes().getLength();
-                                int lengthInputCommand = polygonCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
-                                // int test = 0;
-                                for (int z = 0; z < lengthOutputCommand; z++) {
-                                    //String polygonOutputPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(z).getNodeValue();
-                                    String polyName = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
-                                    if (polygonCommand.getAttribute("name").equals("Polygon")) {
-                                        for (int e = 0; e < lengthInputCommand; e++) {
-                                            String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
-                                            //System.out.println(polyPoints);
-                                            if (polyPoints.contains(label)) {
-                                                polyType = "Polygon";
-                                                polygonNameData = polyName;
-                                                break;
-                                            }
-                                        }
-                                    } else if (polygonCommand.getAttribute("name").equals("Segment")) {
-                                        //System.out.println("label data "+ label);
-                                        for (int e = 0; e < lengthInputCommand; e++) {
-                                            String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
-                                            String polyNameD = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
-                                            if (polyPoints.contains(label)) {
-                                                //System.out.println(label);
-                                                polyType = polyType.equals("Polygon") ? "Polygon" : "Segment";
-                                                polygonNameData = polygonNameData.isEmpty() ? polyNameD : polygonNameData;
-                                                break;
-                                            }
-                                            //System.out.println(polyPoints);
-                                        }
-                                    } else {
-
-                                        System.out.println("hawa");
-
-                                    }
-                                }
-
-                            }
-                            if (polyType.equals("") || polyType.isEmpty()) {
-                                polyType = "Point";
-                            }
-                            System.out.println(polyType + " " + polygonNameData + " " + label + " " + xCoordinate + " " + yCoordinate);
-                        }
-
-                    }
-
-                }
-
-            }
-
-
-            // System.out.println("paremnty node"  + nodeList.item(0).getNodeName());
-
-
-            // Writing to XML file
-            Element newPerson = document.createElement("person");
-            newPerson.setAttribute("name", "John");
-
-            Element newAge = document.createElement("age");
-            newAge.appendChild(document.createTextNode("25"));
-            newPerson.appendChild(newAge);
-
-            root.appendChild(newPerson);
-
-            // Saving changes to a new XML file
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(new File("output.xml"));
-            transformer.transform(source, result);
-
-            System.out.println("XML file updated successfully.");
-
-        } catch (ParserConfigurationException | IOException | org.xml.sax.SAXException | TransformerException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            // Reading XML file
+//            File inputFile = new File("./Geogebra/geogebra.xml");
+//            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+//            DocumentBuilder builder = factory.newDocumentBuilder();
+//            Document document = builder.parse(inputFile);
+//
+//            // Accessing root element
+//            Element root = document.getDocumentElement();
+//            // System.out.println("Rootname: " + root.toString());
+//
+//            // Reading data from XML
+//            NodeList nodeList = root.getElementsByTagName("construction");
+//            //double[][] intArray = new double[20][20];
+//            for (int i = 0; i < nodeList.getLength(); i++) {
+//                NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
+//                for (int j = 0; j < elems.getLength(); j++) {
+//                    Element polygonElement = ((Element) elems.item(j));
+//                    Node polygonElementNode = elems.item(j);
+//                    if (polygonElementNode.getNodeType() == Node.ELEMENT_NODE) {
+//                        if (polygonElement.getAttribute("type").equals("point")) {
+//                            Element polygonElementN = ((Element) polygonElementNode);
+//                            String label = polygonElement.getAttribute("label");
+//                            String xCoordinate = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
+//                            String yCoordinate = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
+//                            String polygonNameData = "";
+//                            String polyType = "";
+//
+//                            NodeList commandPol = ((Element) nodeList.item(i)).getElementsByTagName("command");
+//                            for (int k = 0; k < commandPol.getLength(); k++) {
+//                                Element polygonCommand = ((Element) commandPol.item(k));
+//                                int lengthOutputCommand = polygonCommand.getElementsByTagName("output").item(0).getAttributes().getLength();
+//                                int lengthInputCommand = polygonCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
+//                                // int test = 0;
+//                                for (int z = 0; z < lengthOutputCommand; z++) {
+//                                    //String polygonOutputPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(z).getNodeValue();
+//                                    String polyName = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
+//                                    if (polygonCommand.getAttribute("name").equals("Polygon")) {
+//                                        for (int e = 0; e < lengthInputCommand; e++) {
+//                                            String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
+//                                            //System.out.println(polyPoints);
+//                                            if (polyPoints.contains(label)) {
+//                                                polyType = "Polygon";
+//                                                polygonNameData = polyName;
+//                                                break;
+//                                            }
+//                                        }
+//                                    } else if (polygonCommand.getAttribute("name").equals("Segment")) {
+//                                        //System.out.println("label data "+ label);
+//                                        for (int e = 0; e < lengthInputCommand; e++) {
+//                                            String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
+//                                            String polyNameD = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
+//                                            if (polyPoints.contains(label)) {
+//                                                //System.out.println(label);
+//                                                polyType = polyType.equals("Polygon") ? "Polygon" : "Segment";
+//                                                polygonNameData = polygonNameData.isEmpty() ? polyNameD : polygonNameData;
+//                                                break;
+//                                            }
+//                                            //System.out.println(polyPoints);
+//                                        }
+//                                    } else {
+//
+//                                        System.out.println("hawa");
+//
+//                                    }
+//                                }
+//
+//                            }
+//                            if (polyType.equals("") || polyType.isEmpty()) {
+//                                polyType = "Point";
+//                            }
+//                            System.out.println(polyType + " " + polygonNameData + " " + label + " " + xCoordinate + " " + yCoordinate);
+//                        }
+//
+//                    }
+//
+//                }
+//
+//            }
+//
+//
+//            // System.out.println("paremnty node"  + nodeList.item(0).getNodeName());
+//
+//
+//            // Writing to XML file
+//            Element newPerson = document.createElement("person");
+//            newPerson.setAttribute("name", "John");
+//
+//            Element newAge = document.createElement("age");
+//            newAge.appendChild(document.createTextNode("25"));
+//            newPerson.appendChild(newAge);
+//
+//            root.appendChild(newPerson);
+//
+//            // Saving changes to a new XML file
+//            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+//            Transformer transformer = transformerFactory.newTransformer();
+//            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+//            DOMSource source = new DOMSource(document);
+//            StreamResult result = new StreamResult(new File("output.xml"));
+//            transformer.transform(source, result);
+//
+//            System.out.println("XML file updated successfully.");
+//
+//        } catch (ParserConfigurationException | IOException | org.xml.sax.SAXException | TransformerException e) {
+//            e.printStackTrace();
+//        }
         // f.write();
     }
 
