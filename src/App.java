@@ -125,8 +125,8 @@ public class App extends JFrame{
             setVisible(true);
         }
         public void actionClear(ActionEvent e) {
-            Graphics g = getGraphics();
-            super.paint(g);
+//            Graphics g = getGraphics();
+//            super.paint(g);
             panel.actionPerformed(e);
         }
 
