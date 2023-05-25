@@ -132,6 +132,51 @@
     </euclidianView3D>
         
     <construction author="" date="" title="">
+            
+        <element label="A137" type="point">
+            <show ev="4" label="true" object="true"/>
+            <objColor alpha="0" b="192" g="101" r="21"/>
+            <layer val="0"/>
+            <labelMode val="0"/>
+            <animation playing="false" speed="1" step="0.1" type="1"/>
+            <pointSize val="5"/>
+            <pointStyle val="0"/>
+            <coords x="137" y="148" z="1"/>
+        </element>
+        <element label="A120" type="point">
+            <show ev="4" label="true" object="true"/>
+            <objColor alpha="0" b="192" g="101" r="21"/>
+            <layer val="0"/>
+            <labelMode val="0"/>
+            <animation playing="false" speed="1" step="0.1" type="1"/>
+            <pointSize val="5"/>
+            <pointStyle val="0"/>
+            <coords x="120" y="411" z="1"/>
+        </element>
+        <element label="A357" type="point">
+            <show ev="4" label="true" object="true"/>
+            <objColor alpha="0" b="192" g="101" r="21"/>
+            <layer val="0"/>
+            <labelMode val="0"/>
+            <animation playing="false" speed="1" step="0.1" type="1"/>
+            <pointSize val="5"/>
+            <pointStyle val="0"/>
+            <coords x="357" y="413" z="1"/>
+        </element>
+        <element label="A1068" type="point">
+            <show ev="4" label="true" object="true"/>
+            <objColor alpha="0" b="192" g="101" r="21"/>
+            <layer val="0"/>
+            <labelMode val="0"/>
+            <animation playing="false" speed="1" step="0.1" type="1"/>
+            <pointSize val="5"/>
+            <pointStyle val="0"/>
+            <coords x="1068" y="218" z="1"/>
+        </element>
+        <command name="Polygon">
+            <input a0="A137" a1="A120" a2="A357" a3="A1068"/>
+            <output a0="poly0"/>
+        </command>
     </construction>
     
 </geogebra>

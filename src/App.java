@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class App extends JFrame{
     private boolean expand = false;
     public boolean midPoint = false;
-    public AppPanel frame;
+    public AppPanel panel;
 
     public App() {
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -24,7 +24,7 @@ public class App extends JFrame{
         JMenuItem menuItem;
         menuBar = new JMenuBar();
         //This shows menu.
-        menu = new JMenu("Menu");
+        menu = new JMenu("File");
         menuBar.add(menu);
         menuItem = new JMenuItem(new AbstractAction("Read File") {
             public void actionPerformed(ActionEvent e) {
@@ -39,12 +39,12 @@ public class App extends JFrame{
                 int r = j.showOpenDialog(null);
 
                 if (r == JFileChooser.APPROVE_OPTION) {
-                   frame.readData(j.getSelectedFile().getAbsolutePath());
+                   panel.readData(j.getSelectedFile().getAbsolutePath());
                 }
             }
         });
         menu.add(menuItem);
-        menu.add(new JMenuItem(new AbstractAction("Save File") {
+        menu.add(new JMenuItem(new AbstractAction("Write File") {
             public void actionPerformed(ActionEvent e) {
                 // Button pressed logic goes here
                 File f = new File(System.getProperty("user.dir")+"/Geogebra/templateFile/");
@@ -60,7 +60,7 @@ public class App extends JFrame{
 
                 if (r == JFileChooser.APPROVE_OPTION) {
 //                   j.getSelectedFile().getName();
-                 frame.saveData(j.getSelectedFile().getName());
+                 panel.saveData(j.getSelectedFile().getName());
                     JOptionPane.showMessageDialog(null,
                             "Saved in Geogebra/savedFile/geogebra.xml",
                             "File saved",
@@ -69,27 +69,28 @@ public class App extends JFrame{
             }
         }));
         setJMenuBar(menuBar);
-//
+// side control panel - left side
         ControlPanel cp = new ControlPanel();
         cp.setBounds(525, 10, 80, 30);
-        add(cp, BorderLayout.EAST);
-        System.out.println("value of cp "+cp);
+        add(cp, BorderLayout.WEST);
+        //System.out.println("value of cp "+cp);
 
-//this helps to add polygons
-        frame = new AppPanel();
-        frame.cp = cp;
-        frame.setBorder(BorderFactory.createCompoundBorder());
-        frame.setBounds(0,0,500,500);
-        add(frame, BorderLayout.CENTER);
+//add polygons points, line area
+        panel = new AppPanel();
+        panel.cp = cp;
+        panel.setBorder(BorderFactory.createCompoundBorder());
+        panel.setBounds(0,0,500,500);
+        add(panel, BorderLayout.CENTER);
 
         setVisible(true);
     }
     public class ControlPanel extends JPanel {
-        public TextField textbox = new TextField();
-        public TextField expSize = new TextField();
+        public JTextField textbox = new JTextField();
         public JRadioButton drawPoint = new JRadioButton("Draw Point");
         public JRadioButton drawLine = new JRadioButton("Draw Line");
         public JRadioButton drawPolygon = new JRadioButton("Draw Polygon");
+
+
 
         public ControlPanel() {
             JPanel upPanel = new JPanel();
@@ -104,9 +105,6 @@ public class App extends JFrame{
             upPanel.add(textbox);
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
 
-            // expansion size
-            expSize.setText("1");
-            expSize.setPreferredSize(new Dimension(30,20));
             ButtonGroup group = new ButtonGroup();
             group.add(drawPoint);
             group.add(drawLine);
@@ -116,10 +114,25 @@ public class App extends JFrame{
             upPanel.add(drawLine);
             upPanel.add(drawPolygon);
             upPanel.add(new JSeparator());
+
+            //clear button
+            JButton clearBut = new JButton("Clear");
+            clearBut.setSize(60, 20);
+            clearBut.addActionListener(this::actionClear);
+            upPanel.add(clearBut);
+            add(upPanel, BorderLayout.SOUTH);
             add(upPanel);
             setVisible(true);
         }
+        public void actionClear(ActionEvent e) {
+            Graphics g = getGraphics();
+            super.paint(g);
+            panel.actionPerformed(e);
+        }
+
     }
+
+
     public static void main(String[] args) {
         new App();
     }

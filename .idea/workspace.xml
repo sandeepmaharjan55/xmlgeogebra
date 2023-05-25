@@ -2,32 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="849b7b5a-34c9-4c85-8d39-371ac8a14468" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Geogebra/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/geogebra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/templateFile/templateToWrite.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/XmlGeog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MyPointSan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geogebra/geogebra3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/XmlGeog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/XmlGeog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPolygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Poly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Poly.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/my_point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/my_point.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +59,26 @@
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/Geogebra/templateFile" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.App" />
+      <module name="XmlGeog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
