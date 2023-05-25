@@ -187,7 +187,14 @@ public class AppPanel extends JPanel implements MouseListener {
         }
         polygonList.clear();
         myPointList.clear();
-        myLineList.clear();
+
+        for (int p = 0; p < myLineList.size(); p++) {
+            myLineList.get(p).xCords.clear();
+            myLineList.get(p).yCords.clear();
+            myLineList.get(p).xCordsTemp.clear();
+            myLineList.get(p).yCordsTemp.clear();
+        }
+       // myLineList.clear();
         cp.textbox.setText("1");
         repaint();
         clear = false;

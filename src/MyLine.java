@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MyLine {
-    private Polygon polygon;
 
     public ArrayList<Integer> xCordsTemp = new ArrayList<Integer>();
     public ArrayList<Integer> yCordsTemp = new ArrayList<Integer>();
