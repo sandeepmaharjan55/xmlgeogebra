@@ -3,6 +3,7 @@ package src;
 import java.awt.*;
 import java.util.ArrayList;
 
+// Add feature to have edge list of the polygon
 public class MyPolygon {
     private Polygon polygon;
     public ArrayList<Integer> xCords = new ArrayList<Integer>();

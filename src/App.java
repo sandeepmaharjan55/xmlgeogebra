@@ -7,6 +7,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+
 public class App extends JFrame{
     private boolean expand = false;
     public boolean midPoint = false;
@@ -97,7 +99,7 @@ public class App extends JFrame{
             upPanel.setPreferredSize(new Dimension(200,500));
             upPanel.setMaximumSize(new Dimension(200,500));
             upPanel.setLayout(new GridLayout(0,1));
-            setLayout(new GridLayout(0,1));
+            setLayout(new GridLayout(0,1)); // explore other layouts
             setMaximumSize(new Dimension(200,700));
             textbox.setText("1");
             textbox.setPreferredSize(new Dimension(30,20));
@@ -109,11 +111,26 @@ public class App extends JFrame{
             group.add(drawPoint);
             group.add(drawLine);
             group.add(drawPolygon);
-            drawPolygon.setSelected(true);
+            //drawPolygon.setSelected(true);
+
+            //deselect button here
+            JButton deselectButton = new JButton("Deselect");
+            deselectButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    group.clearSelection();
+                }
+            });
+            upPanel.add(deselectButton);
             upPanel.add(drawPoint);
             upPanel.add(drawLine);
             upPanel.add(drawPolygon);
             upPanel.add(new JSeparator());
+            // Add spaces in between fields
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
 
             //clear button
             JButton clearBut = new JButton("Clear");
@@ -121,9 +138,23 @@ public class App extends JFrame{
             clearBut.addActionListener(this::actionClear);
             upPanel.add(clearBut);
             add(upPanel, BorderLayout.SOUTH);
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             add(upPanel);
             setVisible(true);
         }
+
+
+
+
+//        private void actionDeselect(ActionEvent actionEvent) {
+//            System.out.println("m hahar");
+//            group.clearSelection();
+//
+//        }
+
         public void actionClear(ActionEvent e) {
 //            Graphics g = getGraphics();
 //            super.paint(g);
@@ -137,3 +168,10 @@ public class App extends JFrame{
         new App();
     }
 }
+
+
+// May 25
+// 1. Convert line to objects like polygons and points
+// 2. Add draw methods in all objects to draw the item, and also add labels (A,L,P) respectively
+// 3. Add select radio button to do nothing or any other option to do so
+// 4. While drawing lines, when first point is drawn, the mouse cursor should behave like end of that line and draw the line. Use mouse motion event

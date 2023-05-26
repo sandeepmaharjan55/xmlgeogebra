@@ -14,7 +14,8 @@ public class AppPanel extends JPanel implements MouseListener {
 
     private Polygon pp;
 
-    public MyPointSan mPoint = new MyPointSan();
+//    public MyPointSan mPoint = new MyPointSan();
+    private ArrayList<MyPointSan> pointList = new ArrayList<MyPointSan>();
     public MyLine mLine = new MyLine();
 
     public App.ControlPanel cp;
@@ -95,24 +96,31 @@ public class AppPanel extends JPanel implements MouseListener {
         MyPointSan pp;
         for (int i = 0; i < myPointList.size(); i++) {
             pp = myPointList.get(i);
+            // Draw the points
+            g.fillOval(pp.get_x() - 3, pp.get_y() - 3, 6, 6);
 
-            //   Draw the vertices
-            for (int j = 0; j < pp.xCordsPoint.size(); j++) {
-                //System.out.println("i am here at paint points"+ pp.xCordsPoint +" "+pp.yCordsPoint);
-                new my_point(pp.xCordsPoint.get(j), pp.yCordsPoint.get(j)).draw(g, Color.BLACK);
-                g.fillOval(pp.xCordsPoint.get(j) - 3, pp.yCordsPoint.get(j) - 3, 6, 6);
-            }
+//            pp.draw(g, Color.red, 20);
+
+//            //   Draw the vertices
+//            for (int j = 0; j < pp.xCordsPoint.size(); j++) {
+//                //System.out.println("i am here at paint points"+ pp.xCordsPoint +" "+pp.yCordsPoint);
+//                new my_point(pp.xCordsPoint.get(j), pp.yCordsPoint.get(j)).draw(g, Color.BLACK);
+//                g.fillOval(pp.xCordsPoint.get(j) - 3, pp.yCordsPoint.get(j) - 3, 6, 6);
+//            }
         }
     }
 
     public void drawLines(Graphics g) {
-        MyLine pp;
+        MyLine line;
         for (int i = 0; i < myLineList.size(); i++) {
-            pp = myLineList.get(i);
-            for (int j = 0; j < pp.xCords.size(); j += 2) {
-                g.fillOval(pp.xCords.get(j) - 3, pp.yCords.get(j) - 3, 6, 6);
-                g.fillOval(pp.xCords.get(j + 1) - 3, pp.yCords.get(j + 1) - 3, 6, 6);
-                g.drawLine(pp.xCords.get(j), pp.yCords.get(j), pp.xCords.get(j + 1), pp.yCords.get(j + 1));
+            line = myLineList.get(i);
+            if(i == (myLineList.size() - 1) && line.xCordsTemp.size() % 2 !=0) {
+                g.fillOval(line.xCordsTemp.get(i) - 3, line.yCordsTemp.get(i) - 3, 6, 6);
+            }
+            for (int j = 0; j < line.xCords.size(); j += 2) {
+                g.fillOval(line.xCords.get(j) - 3, line.yCords.get(j) - 3, 6, 6);
+                g.fillOval(line.xCords.get(j + 1) - 3, line.yCords.get(j + 1) - 3, 6, 6);
+                g.drawLine(line.xCords.get(j), line.yCords.get(j), line.xCords.get(j + 1), line.yCords.get(j + 1));
             }
         }
 
@@ -123,6 +131,7 @@ public class AppPanel extends JPanel implements MouseListener {
     public void saveData(String fn) {
         FileIO f = new FileIO(fn);
         f.write(polygonList);
+       // f.writeTwo(myPointList);
         System.out.println("Data Saved");
     }
 
@@ -210,16 +219,16 @@ public class AppPanel extends JPanel implements MouseListener {
             }
             //add points
             if (cp.drawPoint.isSelected()) {
-                mPoint.drawPoints(x, y);
-                myPointList.add(mPoint);
+//                mPoint.drawPoints(x, y);
+                myPointList.add(new MyPointSan(x, y));
                 //polygonList.get(ind).addPoint(x,y);
                 //new my_point(x,y).draw(g,Color.black,5);
-                System.out.println("indx 0 point " + myPointList.get(0).xCordsPoint);
+//                System.out.println("indx 0 point " + myPointList.get(0).xCordsPoint);
             }
 
             if (cp.drawLine.isSelected()) {
                 System.out.println("I am inside draw line selected");
-                mLine.drawLines(x, y);
+                mLine.addPoint(x, y);
                 myLineList.add(mLine);
                 //polygonList.get(ind).addPoint(x,y);
                 //new my_point(x,y).draw(g,Color.black,5);

@@ -141,6 +141,9 @@ public class FileIO {
             System.out.println(e);
         }
     }
+//    public void writeTwo(ArrayList<MyPointSan> myPointList){
+//
+//    }
 
     public ArrayList<MyPolygon> read(String fn) {
         ArrayList<MyPolygon> polygonList = new ArrayList<MyPolygon>();

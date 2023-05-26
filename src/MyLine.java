@@ -10,10 +10,9 @@ public class MyLine {
     public ArrayList<Integer> xCords = new ArrayList<Integer>();
     public ArrayList<Integer> yCords = new ArrayList<Integer>();
     //public ArrayList<int[]> pointyList = new ArrayList<int[]>();
-    public void drawLines(int x, int y){
-//        xCords.add(x);
-//        yCords.add(y);
-
+    // source = [x1, y1], dest = [x2, y2]
+    // public double length() { return segment.distance(); }
+    public void addPoint(int x, int y){
         xCordsTemp.add(x);
         yCordsTemp.add(y);
         if(xCordsTemp.size() % 2==0) {
