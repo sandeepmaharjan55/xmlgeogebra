@@ -175,3 +175,9 @@ public class App extends JFrame{
 // 2. Add draw methods in all objects to draw the item, and also add labels (A,L,P) respectively
 // 3. Add select radio button to do nothing or any other option to do so
 // 4. While drawing lines, when first point is drawn, the mouse cursor should behave like end of that line and draw the line. Use mouse motion event
+
+
+//May 26
+// Work on line drawing from mouse movement
+// Add draw method in polygon (vetices object and edges object)
+// add vertices list(points) and edges list(segments) in the polygon class

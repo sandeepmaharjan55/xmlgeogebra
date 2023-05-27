@@ -2,31 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="849b7b5a-34c9-4c85-8d39-371ac8a14468" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Geogebra/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/geogebra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.ggb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/templateFile/templateToWrite.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/XmlGeog/XmlGeog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/segment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geogebra/geogebra3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/XmlGeog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/XmlGeog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Boundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPolygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Poly.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Poly.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/my_point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/my_point.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,20 +42,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sandeepmaharjan/Desktop/Thesis work/XmlGeog/Geogebra&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/sandeepmaharjan/Desktop/Thesis work/XmlGeog/src"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Geogebra" />
       <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/Geogebra" />
       <recent name="$PROJECT_DIR$/Geogebra/templateFile" />
     </key>
   </component>
