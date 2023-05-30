@@ -8,9 +8,10 @@ public class MyPolygon {
     private Polygon polygon;
     public ArrayList<Integer> xCords = new ArrayList<Integer>();
     public ArrayList<Integer> yCords = new ArrayList<Integer>();
+//    public ArrayList<String> valueLabel = new ArrayList<String>();
 
-    public ArrayList<Integer> xCordsPoint = new ArrayList<Integer>();
-    public ArrayList<Integer> yCordsPoint = new ArrayList<Integer>();
+//    public ArrayList<Integer> xCordsPoint = new ArrayList<Integer>();
+//    public ArrayList<Integer> yCordsPoint = new ArrayList<Integer>();
 
     private ArrayList<my_point> vertices = new ArrayList<my_point>();
 
@@ -33,15 +34,15 @@ public class MyPolygon {
         yCords.add(y);
         polygon = new Polygon(xCords.stream().mapToInt(i -> i).toArray(), yCords.stream().mapToInt(i -> i).toArray(), xCords.size());
         vertices.add(new my_point(x, y));
-
+        xCords.size();
     }
-    public void drawPoints(int x, int y){
-//        System.out.println("printed drawpoints values");
-        xCordsPoint.add(x);
-        yCordsPoint.add(y);
-//        System.out.println("after adding x and y coords");
-//        System.out.println("x and y  " + xCordsPoint+" "+ yCordsPoint);
-    }
+//    public void drawPoints(int x, int y){
+////        System.out.println("printed drawpoints values");
+//        xCordsPoint.add(x);
+//        yCordsPoint.add(y);
+////        System.out.println("after adding x and y coords");
+////        System.out.println("x and y  " + xCordsPoint+" "+ yCordsPoint);
+//    }
     public int getCenterX() {
 //        if (centerX == 0) {
 

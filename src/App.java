@@ -88,6 +88,7 @@ public class App extends JFrame{
     }
     public class ControlPanel extends JPanel {
         public JTextField textbox = new JTextField();
+        public JTextField textboxUnclick = new JTextField();
         public JRadioButton drawPoint = new JRadioButton("Draw Point");
         public JRadioButton drawLine = new JRadioButton("Draw Line");
         public JRadioButton drawPolygon = new JRadioButton("Draw Polygon");
@@ -105,6 +106,7 @@ public class App extends JFrame{
             textbox.setPreferredSize(new Dimension(30,20));
             upPanel.add(new JLabel("Select Element"));
             upPanel.add(textbox);
+            upPanel.add(textboxUnclick);
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
 
             ButtonGroup group = new ButtonGroup();
