@@ -16,20 +16,19 @@ public class AppPanel extends JPanel implements MouseListener {
     private Polygon pp;
 
 //    public MyPointSan mPoint = new MyPointSan();
-  //  private ArrayList<MyPointSan> mLineList = new ArrayList<MyPointSan>();
-   // public MyLine mLine = new MyLine();
+    //  private ArrayList<MyPointSan> mLineList = new ArrayList<MyPointSan>();
+    // public MyLine mLine = new MyLine();
 
     public App.ControlPanel cp;
 
 
     private ArrayList<Poly> poly = new ArrayList<Poly>();
-
     // MyPoly Implementation
     private ArrayList<MyPolygon> polygonList = new ArrayList<MyPolygon>();
     private ArrayList<MyPointSan> myPointList = new ArrayList<MyPointSan>();
-//    private ArrayList<MouseDragVertices> mouseDragVertexList = new ArrayList<MouseDragVertices>();
-   public ArrayList<MyLine> myLinePoint = new ArrayList<MyLine>();
-    public ArrayList<my_point[]> myLineSegment = new ArrayList<my_point[]>();
+    //    private ArrayList<MouseDragVertices> mouseDragVertexList = new ArrayList<MouseDragVertices>();
+    private ArrayList<MyLine> myLinePoint = new ArrayList<MyLine>();
+    private ArrayList<my_point[]> myLineSegment = new ArrayList<my_point[]>();
     private JLabel coorLabel = new JLabel("00", SwingConstants.LEFT);
 
     private Boundary b;
@@ -78,6 +77,8 @@ public class AppPanel extends JPanel implements MouseListener {
         for (int i = 0; i < polygonList.size(); i++) {
             pp = polygonList.get(i);
             g.drawPolygon(pp.getPolygon());
+//            System.out.println(pp.coordLabel.size());
+            //g.drawString(pp.coordLabel.get(i), pp.xCords.get(i) - 10, pp.yCords.get(i) - 10);
             // fill the polygon
             g.setColor(Color.CYAN);
             g.fillPolygon(pp.getPolygon());
@@ -87,6 +88,7 @@ public class AppPanel extends JPanel implements MouseListener {
             // Draw the vertices
             for (int j = 0; j < pp.xCords.size(); j++) {
                 g.fillOval(pp.xCords.get(j) - 2, pp.yCords.get(j) - 2, 4, 4);
+                g.drawString(pp.coordLabel.get(j), pp.xCords.get(j) - 10, pp.yCords.get(j) - 10);
             }
             if (pp.xCords.size() >= 1) {
                 g.drawString("poly" + (i + 1) + "", pp.getCenterX() - 5, pp.getCenterY() + 5);
@@ -114,13 +116,13 @@ public class AppPanel extends JPanel implements MouseListener {
 //            }
             if (myPointList.size() >= 1) {
                 g.drawString("p" + (i + 1) + "", pp.get_x() - 20, pp.get_y() + 20);
-                cp.textboxUnclick.setText("Point "+(i + 2)+" being drawn.");
+                cp.textboxUnclick.setText("Point " + (i + 2) + " being drawn.");
             }
         }
     }
 
     public void drawLines(Graphics g) {
-       MyLine line;
+        MyLine line;
         my_point[] lineSegment;
         //System.out.println("line size "+myLinePoint.size());
 //        for (int i = 0; i < myLinePoint.size(); i++) {
@@ -135,23 +137,26 @@ public class AppPanel extends JPanel implements MouseListener {
             line = myLinePoint.get(i);
             if (i == (myLinePoint.size() - 1)) {
                 g.fillOval(line.get_P1().get_x() - 3, line.get_P1().get_y() - 3, 6, 6);
+                //System.out.println("P1 label data: " + i+1);
+                //g.drawString("lp" + (i+1) + "", line.get_P1().get_x()-10, line.get_P1().get_y()-10);
+//                frame.add(label);
                 //g.fillOval(line.get_P1().get_x() - 3, line.get_P1().get_y() - 3, 6, 6);
             }
         }
         //System.out.println("line size "+myLineSegment.size());
         for (int i = 0; i < myLineSegment.size(); i++) {
-            lineSegment = myLineSegment.get(i);
-            System.out.println("hell nio");
 
-            //g.fillOval(lineSegment[0].get_x() - 3, lineSegment[0].get_y() - 3, 6, 6);
-           // g.fillOval(lineSegment[0].get_x() - 3, lineSegment[0].get_y() - 3, 6, 6);
+            lineSegment = myLineSegment.get(i);
+            // g.fillOval(lineSegment[0].get_x() - 3, lineSegment[0].get_y() - 3, 6, 6);
             //System.out.println(lineSegment[0].get_x());
             for (int s = 0; s < lineSegment.length; s++) {
-                System.out.println("lineSegment");
+                //System.out.println("lineSegment");
                 int x1 = lineSegment[0].get_x();
                 int y1 = lineSegment[0].get_y();
                 int x2 = lineSegment[1].get_x();
                 int y2 = lineSegment[1].get_y();
+//                System.out.println("P1 label data: " + line.label);
+//                System.out.println("P2 label data: " + line.label);
                 //System.out.println("sata xy"+x1+" "+y1+" "+x2+" "+y2);
 //                if(s==0)System.out.println("source data: x "+lineSegment[s].get_x()+" y "+lineSegment[s].get_y());
 //                else System.out.println("target data: x "+lineSegment[s].get_x()+" y "+lineSegment[s].get_y());
@@ -159,9 +164,16 @@ public class AppPanel extends JPanel implements MouseListener {
                 g.fillOval(x1 - 3, y1 - 3, 6, 6);
                 g.fillOval(x2 - 3, y2 - 3, 6, 6);
                 g.drawLine(x1, y1, x2, y2);
-                g.drawString("l" + (i+1) + "", ((x1+x2)/2)-20, ((y1+y2)/2)+20);
+
+//add label to points
+                int d = ((i + 1) * 2) + 1;
+                g.drawString("lp" + (d - 2) + "", x1 - 10, y1 - 10);
+                g.drawString("lp" + (d - 1) + "", x2 - 10, y2 - 10);
+
+
+                g.drawString("l" + (i + 1) + "", ((x1 + x2) / 2) - 20, ((y1 + y2) / 2) + 20);
             }
-            cp.textboxUnclick.setText("Line "+(i + 2)+" being drawn.");
+            cp.textboxUnclick.setText("Line " + (i + 2) + " being drawn.");
 //            line.drawSegment(g,Arrays.stream(linePoint).toList().get(0).get_x(),Arrays.stream(linePoint).toList().get(0).get_y(),Arrays.stream(linePoint).toList().get(1).get_x(),Arrays.stream(linePoint).toList().get(1).get_y());
 
 //            System.out.println("source "+line.get_P1().get_x()+" "+line.get_P1().get_y());
@@ -180,7 +192,7 @@ public class AppPanel extends JPanel implements MouseListener {
     public void saveData(String fn) {
         FileIO f = new FileIO(fn);
         f.write(polygonList);
-       // f.writeTwo(myPointList);
+        // f.writeTwo(myPointList);
         System.out.println("Data Saved");
     }
 
@@ -200,31 +212,18 @@ public class AppPanel extends JPanel implements MouseListener {
         public void mouseMoved(MouseEvent e) {
             int x = e.getX();
             int y = e.getY();
-            if(cx!=x || cy!=y) repaint();
-            cx=x;
-            cy=y;
+            if (cx != x || cy != y) repaint();
+            cx = x;
+            cy = y;
             coorLabel.setText("" + x + ", " + y);
-            //System.out.println("line is being drawn?");
-//            if (myLinePoint.size() > 0) {
-//                MyLine line;
-//                line = myLinePoint.get(myLinePoint.size() - 1);
-//                if (line.get_P2() == null) {
-//                    System.out.println("line is being drawn? " + x + ", " + y);
-//                    line.addPoint(x, y);
-//                }
-//            }
-            //repaint();
-            //System.out.println("lsiz  " +myLinePoint.size());
+            //to make line draw dynamic
             if (myLinePoint.size() > 0) {
                 MyLine line;
-
                 line = myLinePoint.get(myLinePoint.size() - 1);
                 if (line.get_P2() == null) {
-                    System.out.println("line is being drawn? " + x + ", " + y);
                     line.tempDraw(getGraphics(), cx, cy);
                 }
             }
-          //repaint();
         }
     }
 
@@ -253,6 +252,7 @@ public class AppPanel extends JPanel implements MouseListener {
     //Create new polygons
     private static final long CLICK_INTERVAL = 2000;
     private long lastClickTime = 0;
+
     @Override
     public void mouseClicked(MouseEvent e) {
 //        if(cp.movePolygon.isSelected()) { return; }
@@ -267,29 +267,33 @@ public class AppPanel extends JPanel implements MouseListener {
 
         long currentTime = System.currentTimeMillis();
 
-        if (e.getButton()==3 && cp.drawPolygon.isSelected() && (currentTime - lastClickTime > CLICK_INTERVAL)){
+        if (e.getButton() == 3 && cp.drawPolygon.isSelected() && (currentTime - lastClickTime > CLICK_INTERVAL)) {
             int dada = Integer.parseInt(cp.textbox.getText()) + 1;
             cp.textbox.setText(String.valueOf(dada));
             lastClickTime = currentTime;
         }
 
-        if (e.getButton()==1) {
+        if (e.getButton() == 1) {
             if (cp.drawPolygon.isSelected()) {
 
 
                 // clearMidPoints();
-                if (poly.size() < ind + 1) {
-                    poly.add(new Poly());
-                }
-
-                poly.get(ind).xCords.add(x);
-                poly.get(ind).yCords.add(y);
+//                if (poly.size() < ind + 1) {
+//                    poly.add(new Poly());
+//
+//                }
+//
+//                poly.get(ind).xCords.add(x);
+//                poly.get(ind).yCords.add(y);
+                //polyVertexLabel.get(ind).add("po"+ (i+1));
 
                 // My Polygon implementation
 
                 if (polygonList.size() < ind + 1) {
                     polygonList.add(new MyPolygon());
+
                 }
+                polygonList.get(ind).addCoordLabel(ind+1);
                 polygonList.get(ind).addPoint(x, y);
 
             }
@@ -313,17 +317,17 @@ public class AppPanel extends JPanel implements MouseListener {
 //                        g.fillOval(line.get_P1().get_x() - 3, line.get_P1().get_y() - 3, 6, 6);
 //                    }
                 } else {
-                    line = myLinePoint.get(myLinePoint.size()-1);
-                    if(line.get_P2() != null) {
+                    line = myLinePoint.get(myLinePoint.size() - 1);
+                    if (line.get_P2() != null) {
                         line = new MyLine(x, y);
                     } else {
                         line.addPoint(x, y);
                     }
-                    if(line.complete==true) {
+                    if (line.complete == true) {
 
 //                        System.out.println("source "+line.get_P1().get_x()+" "+line.get_P1().get_y());
 //                        System.out.println("target "+line.get_P2().get_x()+" "+line.get_P2().get_y());
-                        my_point[] lineSegment = {line.get_P1(),line.get_P2()};
+                        my_point[] lineSegment = {line.get_P1(), line.get_P2()};
                         myLineSegment.add(lineSegment);
                     }
                 }
@@ -335,7 +339,7 @@ public class AppPanel extends JPanel implements MouseListener {
                 //adding line segment
 
 
-                 //myLineSegment.add((line.segmentList.get(0)));
+                //myLineSegment.add((line.segmentList.get(0)));
 //                System.out.println(Arrays.stream((line.segmentList.get(0))).toList());
 //                //System.out.println(Arrays.stream((line.segmentList.get(0))).toList());
 //                //use this
