@@ -89,9 +89,9 @@ public class App extends JFrame{
     public class ControlPanel extends JPanel {
         public JTextField textbox = new JTextField();
         public JTextField textboxUnclick = new JTextField();
-        public JRadioButton drawPoint = new JRadioButton("Draw Point");
-        public JRadioButton drawLine = new JRadioButton("Draw Line");
-        public JRadioButton drawPolygon = new JRadioButton("Draw Polygon");
+        public JRadioButton drawPoint = new JRadioButton("Point");
+        public JRadioButton drawLine = new JRadioButton("Line");
+        public JRadioButton drawPolygon = new JRadioButton("Polygon");
 
 
 
@@ -107,8 +107,8 @@ public class App extends JFrame{
             upPanel.add(new JLabel("Select Element"));
             upPanel.add(textbox);
             upPanel.add(textboxUnclick);
+            textboxUnclick.setEditable(false);
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
-
             ButtonGroup group = new ButtonGroup();
             group.add(drawPoint);
             group.add(drawLine);
@@ -117,17 +117,31 @@ public class App extends JFrame{
 
             //deselect button here
             JButton deselectButton = new JButton("Deselect");
-            deselectButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    group.clearSelection();
-                }
-            });
+//            deselectButton.addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    group.clearSelection();
+//                }
+//            });
+            deselectButton.addActionListener(this::actionClear);
             upPanel.add(deselectButton);
+            upPanel.add(new JLabel("Select Geometry Collection "));
             upPanel.add(drawPoint);
             upPanel.add(drawLine);
             upPanel.add(drawPolygon);
             upPanel.add(new JSeparator());
+
+            //delete button here Select element and Geometry
+            upPanel.add(new JLabel("Select element and Geometry"));
+            JButton deleteButton = new JButton("Delete");
+//            deselectButton.addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    group.clearSelection();
+//                }
+//            });
+            deleteButton.addActionListener(this::actionDelete);
+            upPanel.add(deleteButton);
             // Add spaces in between fields
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
@@ -148,7 +162,10 @@ public class App extends JFrame{
             setVisible(true);
         }
 
+        private void actionDelete(ActionEvent e) {
+          panel.actionDeletePerformed(e);
 
+        }
 
 
 //        private void actionDeselect(ActionEvent actionEvent) {
@@ -180,6 +197,6 @@ public class App extends JFrame{
 
 
 //May 26
-// Work on line drawing from mouse movement
+// Work on line drawing from mouse movement - done
 // Add draw method in polygon (vetices object and edges object)
-// add vertices list(points) and edges list(segments) in the polygon class
+// add vertices list(points) and edges list(segments) in the polygon class - done
