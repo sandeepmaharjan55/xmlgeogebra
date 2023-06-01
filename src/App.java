@@ -198,5 +198,13 @@ public class App extends JFrame{
 
 //May 26
 // Work on line drawing from mouse movement - done
-// Add draw method in polygon (vetices object and edges object)
+// Add draw method in polygon
 // add vertices list(points) and edges list(segments) in the polygon class - done
+
+
+//May 31
+//polygon move, set index null after deletion array
+//display the length of th line
+// add button to find mid point of line
+//polygon perimeter and area
+// if line intersect represent it with red

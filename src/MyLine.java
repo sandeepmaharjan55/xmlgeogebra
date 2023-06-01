@@ -1,33 +1,29 @@
 package src;
 
+import javax.swing.text.Segment;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class MyLine extends segment {
+    public segment innerSegment;
     private my_point P1, P2;
     //    public ArrayList<my_point[]> segmentList = new ArrayList<>();
-    public ArrayList<String> lineNameList = new ArrayList<String>();
-    public ArrayList<MyLine> lineList = new ArrayList<MyLine>();
+//    public ArrayList<String> lineNameList = new ArrayList<String>();
+//    public ArrayList<MyLine> lineList = new ArrayList<MyLine>();
     public boolean complete;
     private int centerX, centerY;
-//    public int label;
-//    private int i = 0;
 
-    MyLine() {
-
-    }
+//    MyLine(int index) {
+//        index++;
+//    }
 
     MyLine(int x, int y) {
         P1 = new my_point(x, y);
-        //label = i++;
-//        coordLabel.add("hel p1");
         complete = false;
     }
 
     public void addPoint(int x, int y) {
         P2 = new my_point(x, y);
-        //label = i++;
-        //coordLabel.add("hel p2");
         complete = true;
     }
 
@@ -71,6 +67,7 @@ public int getCenterX() {
     return centerX;
 }
 
+
     public int getCenterY() {
         if(P1.get_y()==0 || P2.get_y()==0) { return 0; }
         int sum = P1.get_y()+P2.get_y();
@@ -78,6 +75,12 @@ public int getCenterX() {
         return centerY;
     }
 
+    public void midPoint(Graphics g) {
+        if(complete) innerSegment = new segment(P1,P2);
+        g.setColor(Color.red);
+        g.fillOval(innerSegment.mid_point().get_x() - 3, innerSegment.mid_point().get_y() - 3, 6, 6);
+        g.setColor(Color.black);
+    }
 //    public void addLine(MyLine line) {
 //        lineList.add(line);
 //    }
