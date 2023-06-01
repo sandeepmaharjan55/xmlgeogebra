@@ -3,6 +3,7 @@ package src;
 import javax.swing.text.Segment;
 import java.awt.*;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class MyLine extends segment {
     public segment innerSegment;
@@ -74,16 +75,30 @@ public int getCenterX() {
         centerY = sum/2;
         return centerY;
     }
+    //to change double value to value upto 2 decimal
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
+    //find midpoint and distance
     public void midPoint(Graphics g) {
-        if(complete) innerSegment = new segment(P1,P2);
+        innerSegment = new segment(P1,P2);
+        int midX = innerSegment.mid_point().get_x();
+        int midY = innerSegment.mid_point().get_y();
         g.setColor(Color.red);
-        g.fillOval(innerSegment.mid_point().get_x() - 3, innerSegment.mid_point().get_y() - 3, 6, 6);
+        g.fillOval(midX - 3, midY - 3, 6, 6);
         g.setColor(Color.black);
     }
-//    public void addLine(MyLine line) {
-//        lineList.add(line);
-//    }
+    public void segDistance(Graphics g) {
+        innerSegment = new segment(P1,P2);
+        int midX = innerSegment.mid_point().get_x();
+        int midY = innerSegment.mid_point().get_y();
+        String distLen = df.format(innerSegment.length());
+        g.drawString(distLen, midX - 40, midY + 20);
+    }
+    public Boolean segIntersect(Graphics g, my_point p1, my_point p2) {
+        innerSegment = new segment(P1,P2);
+        return innerSegment.Intersect(p1,p2);
+
+    }
 }
 
 

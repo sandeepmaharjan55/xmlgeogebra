@@ -122,6 +122,13 @@ public class AppPanel extends JPanel implements MouseListener {
            //  System.out.println(line.mid_point().get_x()+" "+line.mid_point().get_y());
             if(line.complete){
                 line.midPoint(g);
+                line.segDistance(g);
+
+
+                line.segIntersect(g,line.);
+
+
+
                 g.drawString("l " + (i+1) + "", line.getCenterX()+10, line.getCenterY()+10);
             }
 
