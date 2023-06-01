@@ -25,6 +25,7 @@ public class MyLine extends segment {
 
     public void addPoint(int x, int y) {
         P2 = new my_point(x, y);
+        update(P1, P2);
         complete = true;
     }
 
@@ -36,7 +37,7 @@ public class MyLine extends segment {
         return P1;
     }
 
-        public void draw(Graphics g){
+    public void draw(Graphics g){
 //        System.out.println("P1 is: " + P1.get_x());
         if(P1!=null) {
             g.fillOval(P1.get_x() - 3, P1.get_y() - 3, 6, 6);
@@ -75,29 +76,14 @@ public int getCenterX() {
         centerY = sum/2;
         return centerY;
     }
-    //to change double value to value upto 2 decimal
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+//    //to change double value to value upto 2 decimal
+//    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     //find midpoint and distance
-    public void midPoint(Graphics g) {
-        innerSegment = new segment(P1,P2);
-        int midX = innerSegment.mid_point().get_x();
-        int midY = innerSegment.mid_point().get_y();
+    public void midPoint(Graphics g,int midX,int midY) {
         g.setColor(Color.red);
         g.fillOval(midX - 3, midY - 3, 6, 6);
         g.setColor(Color.black);
-    }
-    public void segDistance(Graphics g) {
-        innerSegment = new segment(P1,P2);
-        int midX = innerSegment.mid_point().get_x();
-        int midY = innerSegment.mid_point().get_y();
-        String distLen = df.format(innerSegment.length());
-        g.drawString(distLen, midX - 40, midY + 20);
-    }
-    public Boolean segIntersect(Graphics g, my_point p1, my_point p2) {
-        innerSegment = new segment(P1,P2);
-        return innerSegment.Intersect(p1,p2);
-
     }
 }
 

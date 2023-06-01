@@ -3,6 +3,7 @@ package src;
 import java.awt.*;
 import java.awt.Polygon;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -112,23 +113,31 @@ public class AppPanel extends JPanel implements MouseListener {
             }
         }
     }
-
+    //to change double value to value upto 2 decimal
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     public void drawLines(Graphics g) {
         MyLine line;
+        MyLine line1;
         for (int i = 0; i < myLineList.size(); i++) {
             line = myLineList.get(i);
             line.draw(g);
             //line.midPoint();
            //  System.out.println(line.mid_point().get_x()+" "+line.mid_point().get_y());
+
+            for (int j = i+1; j < myLineList.size(); j++) {
+                line1 = myLineList.get(j);
+               if(line1.Intersect(line) && line.complete && line1.complete) {
+                   System.out.println("intersects");
+                   System.out.println("" + i + " -> " + j);
+                   g.setColor(Color.red);
+                   g.drawLine(line.get_P1().get_x(), line.get_P1().get_y(), line.get_P2().get_x(), line.get_P2().get_y());
+                   g.setColor(Color.BLACK);
+               }
+            }
+
             if(line.complete){
-                line.midPoint(g);
-                line.segDistance(g);
-
-
-                line.segIntersect(g,line.);
-
-
-
+                line.midPoint(g,line.mid_point().get_x(),line.mid_point().get_y());
+                g.drawString(df.format(line.length()), line.getCenterX()-10, line.getCenterY()-10);
                 g.drawString("l " + (i+1) + "", line.getCenterX()+10, line.getCenterY()+10);
             }
 
@@ -280,10 +289,10 @@ public class AppPanel extends JPanel implements MouseListener {
             }
             //add points
             if (cp.drawPoint.isSelected()) {
-                if (myPointList.size() < (ind + 1)) {
-                    myPointList.add(new MyPoint(x, y));
-                }
-                 myPointList.get(ind).addPoint(x,y);
+//                if (myPointList.size() < (ind + 1)) {
+//                    myPointList.add(new MyPoint(x, y));
+//                }
+                 myPointList.add(new MyPoint(x,y));
             }
 
             if (cp.drawLine.isSelected()) {
