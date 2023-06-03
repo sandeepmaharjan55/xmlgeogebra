@@ -14,9 +14,8 @@ public class MyLine extends segment {
     public boolean complete;
     private int centerX, centerY;
 
-//    MyLine(int index) {
-//        index++;
-//    }
+    MyLine() {
+    }
 
     MyLine(int x, int y) {
         P1 = new my_point(x, y);

@@ -159,6 +159,7 @@ public class AppPanel extends JPanel implements MouseListener {
     public void readData(String fn) {
         FileIO f = new FileIO(fn);
         polygonList = f.read(fn);
+        myLineList = f.readLine(fn);
         repaint();
     }
 

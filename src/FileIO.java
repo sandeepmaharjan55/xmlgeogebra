@@ -50,16 +50,16 @@ public class FileIO {
             Document document = builder.parse(inputFile);
             // Accessing root element
             Element root = document.getDocumentElement();
-           // Element nodeList = root.getElementsByTagName("construction");
+            // Element nodeList = root.getElementsByTagName("construction");
 
-            for(int i=0;i< polygonList.size();i++) {
+            for (int i = 0; i < polygonList.size(); i++) {
                 MyPolygon p = polygonList.get(i);
-                for(int j=0;j<p.xCords.size();j++) {
+                for (int j = 0; j < p.xCords.size(); j++) {
                     //fw.write("" + i + " " + p.xCords.get(j) + " " + p.yCords.get(j) + "\n");
                     //element tag start
                     Element newElement = document.createElement("element");
                     newElement.setAttribute("type", "point");
-                    newElement.setAttribute("label", "A"+p.xCords.get(j));
+                    newElement.setAttribute("label", "A" + p.xCords.get(j));
 
                     //show
                     Element newShow = document.createElement("show");
@@ -113,19 +113,19 @@ public class FileIO {
 
                 }
                 //command
-                System.out.println("Print polygon "+ i);
+                System.out.println("Print polygon " + i);
                 Element newCommand = document.createElement("command");
                 newCommand.setAttribute("name", "Polygon");
 
                 Element commandInput = document.createElement("input");
-                for(int j=0;j<p.xCords.size();j++) {
+                for (int j = 0; j < p.xCords.size(); j++) {
                     //A j add different unique string
                     commandInput.setAttribute("a" + j, "A" + p.xCords.get(j));
                 }
                 newCommand.appendChild(commandInput);
 
                 Element commandOutput = document.createElement("output");
-                commandOutput.setAttribute("a0", "poly"+i);
+                commandOutput.setAttribute("a0", "poly" + i);
                 newCommand.appendChild(commandOutput);
                 //append command tag
                 (root.getElementsByTagName("construction").item(0)).appendChild(newCommand);
@@ -161,116 +161,59 @@ public class FileIO {
             // Reading data from XML
             NodeList nodeList = root.getElementsByTagName("construction");
             for (int i = 0; i < nodeList.getLength(); i++) {
-//                NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
-//                for (int j = 0; j < elems.getLength(); j++) {
-//                    Element polygonElement = ((Element) elems.item(j));
-//                    Node polygonElementNode = elems.item(j);
-//                    if (polygonElementNode.getNodeType() == Node.ELEMENT_NODE) {
-//                        if (polygonElement.getAttribute("type").equals("point")) {
-//                            Element polygonElementN = ((Element) polygonElementNode);
-//                            String label = polygonElementN.getAttribute("label");
-//                            String xCoordinate = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
-//                            String yCoordinate = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
-//                            String polygonNameData = "";
-//                            String polyType = "";
-//                            p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
-//
-//                            NodeList commandPol = ((Element) nodeList.item(i)).getElementsByTagName("command");
-//                            for (int k = 0; k < commandPol.getLength(); k++) {
-//                                Element polygonCommand = ((Element) commandPol.item(k));
-//                                int lengthOutputCommand = polygonCommand.getElementsByTagName("output").item(0).getAttributes().getLength();
-//                                int lengthInputCommand = polygonCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
-//                                for (int z = 0; z < lengthOutputCommand; z++) {
-//                                    String polyName = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
-//                                    if (polygonCommand.getAttribute("name").equals("Polygon")) {
-//                                        for (int e = 0; e < lengthInputCommand; e++) {
-//                                            String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
-//                                            //System.out.println(polyPoints);
-//                                            if (polyPoints.contains(label)) {
-//                                                //System.out.println("goat "+polyPoints+label);
-//                                                polyType = "Polygon";
-//                                                polygonNameData = polyName;
-//                                                break;
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                                String ggt = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(lengthInputCommand - 1).getNodeValue();
-//                                if (ggt.equals(label)) {
-//                                    // add code here to connect starting and ending point sandeep
-//                                    String xCoordinateNew = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
-//                                    String yCoordinateNew = polygonElementN.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
-//                                    polygonList.add(p);
-//                                    System.out.println(p.xCords+" "+p.yCords);
-//                                    p = new MyPolygon((int) (Float.parseFloat(xCoordinateNew)), (720 - (int) (Float.parseFloat(yCoordinateNew))));
-//                                    p.xCords.remove(0);
-//                                    p.yCords.remove(0);
-//
-//                                }
-//
-//                            }
-//                        }
+                NodeList commandPol = ((Element) nodeList.item(i)).getElementsByTagName("command");
+                for (int k = 0; k < commandPol.getLength(); k++) {
+                    Element geometricCommand = ((Element) commandPol.item(k));
+                    int lengthInputCommand = geometricCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
+                    if (geometricCommand.getAttribute("name").equals("Polygon")) {
+                        for (int e = 0; e < lengthInputCommand; e++) {
+                            String polyPoints = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
+                            NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
+                            // System.out.println("elemtnts length " + elems.getLength());
+                            for (int j = 0; j < elems.getLength(); j++) {
+                                Element polygonElement = ((Element) elems.item(j));
+                                String label = polygonElement.getAttribute("label");
+                                String pointElement = polygonElement.getAttribute("type");
+                                // System.out.println("ploypoint and label  " + polyPoints + " " + label);
+                                if (polyPoints.equals(label) && pointElement.equals("point")) {
+                                    //System.out.println("count");
+                                    String xCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
+                                    String yCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
+                                    p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
+                                    String polyEndPointLabel = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(lengthInputCommand - 1).getNodeValue();
+                                    if (polyPoints.equals(polyEndPointLabel)) {
+                                        p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
+                                        polygonList.add(p);
+                                        p = new MyPolygon((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
+                                        p.xCords.remove(0);
+                                        p.yCords.remove(0);
+                                        break;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    } else if (geometricCommand.getAttribute("name").equals("Segment")) {
+                        System.out.println("segments found ");
+                        for (int e = 0; e < lengthInputCommand; e++) {
+                            String segPoints = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
+                            NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
+                            System.out.println("elemtnts length " + elems.getLength());
+                            for (int j = 0; j < elems.getLength(); j++) {
+                                Element polygonElement = ((Element) elems.item(j));
+                                String label = polygonElement.getAttribute("label");
+                                String pointElement = polygonElement.getAttribute("type");
+                                // System.out.println("ploypoint and label  " + polyPoints + " " + label);
+                                if (segPoints.equals(label) && pointElement.equals("point")) {
 
-                        NodeList commandPol = ((Element) nodeList.item(i)).getElementsByTagName("command");
-                        //System.out.println("cmdlength "+commandPol.getLength());
-                        for (int k = 0; k < commandPol.getLength(); k++) {
-                            Element polygonCommand = ((Element) commandPol.item(k));
-                            int lengthOutputCommand = polygonCommand.getElementsByTagName("output").item(0).getAttributes().getLength();
-                            int lengthInputCommand = polygonCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
-                            if (polygonCommand.getAttribute("name").equals("Polygon")) {
-                               // System.out.println("input lenfth "+lengthInputCommand);
-                                String polyName = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
-
-                                System.out.println("polygon name "+polyName);
-
-                                for (int e = 0; e < lengthInputCommand; e++) {
-                                    String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
-                                  //  System.out.println("polypointds label "+ polyPoints);
-                                    //sabai aairacha polypointds
-
-                                  //  for (int m = 0; m < nodeList.getLength(); m++) {
-                                        //System.out.println("node list length "+nodeList.getLength());
-                                        NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
-                                        System.out.println("elemtnts length "+ elems.getLength());
-                                        for (int j = 0; j < elems.getLength(); j++) {
-                                            Element polygonElement = ((Element) elems.item(j));
-                                            String label = polygonElement.getAttribute("label");
-                                            String pointElement = polygonElement.getAttribute("type");
-
-                                            // System.out.println("elems length "+elems.getLength()); retunr 31
-                                            System.out.println("ploypoint and label  "+polyPoints+" "+label);
-                                                if (polyPoints.equals(label) && pointElement.equals("point")) {
-
-                                                    //System.out.println("ploypoint and label  "+polyPoints+" "+label);
-                                                    //error here one point coordinate is left out
-                                                    System.out.println("count");
-                                                    String xCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
-                                                    String yCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
-                                                    //System.out.println("Coords "+xCoordinate+" "+ yCoordinate);
-                                                    p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
-                                                    //System.out.println("p x "+p.xCords+" p y " + p.yCords);
-                                                    String polyEndPointLabel = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(lengthInputCommand-1).getNodeValue();
-                                                    if (polyPoints.equals(polyEndPointLabel)) {
-                                                        p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
-                                                        polygonList.add(p);
-                                                        //System.out.println("p x y  "+p.xCords+" "+p.yCords);
-                                                        // System.out.println(p.xCords+" "+p.yCords);
-                                                        p = new MyPolygon((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
-                                                        //System.out.println("p x y  "+p.xCords+" "+p.yCords);
-//                                                System.out.println("p x "+p.xCords+" p y " + p.yCords);
-                                                        p.xCords.remove(0);
-                                                        p.yCords.remove(0);
-                                                        break;
-                                                    }
-                                                   break;
-                                                }
-
-                                        }
-
-
+                                    String xCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
+                                    String yCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
+                                    System.out.println("x "+xCoordinate+" y "+yCoordinate);
 
                                 }
                             }
+                        }
+                    }
                 }
             }
             //added code XML END
@@ -280,6 +223,58 @@ public class FileIO {
 
         //System.out.println("polygon list " + polygonList);
         return polygonList;
+    }
+    public ArrayList<MyLine> readLine(String fn) {
+        ArrayList<MyLine> myLineList = new ArrayList<MyLine>();
+        try {
+            MyLine p = new MyLine();
+            //added code XML
+            //System.out.println("file name "+fn);
+            File inputFile = new File(fn);
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.parse(inputFile);
+            // Accessing root element
+            Element root = document.getDocumentElement();
+            // Reading data from XML
+            NodeList nodeList = root.getElementsByTagName("construction");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                NodeList commandPol = ((Element) nodeList.item(i)).getElementsByTagName("command");
+                for (int k = 0; k < commandPol.getLength(); k++) {
+                    Element geometricCommand = ((Element) commandPol.item(k));
+                    int lengthInputCommand = geometricCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
+                     if (geometricCommand.getAttribute("name").equals("Segment")) {
+                        System.out.println("segments found ");
+                        for (int e = 0; e < lengthInputCommand; e++) {
+                            String segPoints = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
+                            NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
+                            System.out.println("elemtnts length " + elems.getLength());
+                            for (int j = 0; j < elems.getLength(); j++) {
+                                Element polygonElement = ((Element) elems.item(j));
+                                String label = polygonElement.getAttribute("label");
+                                String pointElement = polygonElement.getAttribute("type");
+                                // System.out.println("ploypoint and label  " + polyPoints + " " + label);
+                                if (segPoints.equals(label) && pointElement.equals("point")) {
+
+                                    String xCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
+                                    String yCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
+                                   // System.out.println("x "+Integer.parseInt(xCoordinate)+" y "+Integer.parseInt(yCoordinate));
+                                    p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
+//                                    myLineList.add(p);
+                                    System.out.println("p value "+p.);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //added code XML END
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        //System.out.println("polygon list " + polygonList);
+        return myLineList;
     }
 
     public static void main(String[] args) {
@@ -314,16 +309,16 @@ public class FileIO {
 //
 //                            NodeList commandPol = ((Element) nodeList.item(i)).getElementsByTagName("command");
 //                            for (int k = 0; k < commandPol.getLength(); k++) {
-//                                Element polygonCommand = ((Element) commandPol.item(k));
-//                                int lengthOutputCommand = polygonCommand.getElementsByTagName("output").item(0).getAttributes().getLength();
-//                                int lengthInputCommand = polygonCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
+//                                Element geometricCommand = ((Element) commandPol.item(k));
+//                                int lengthOutputCommand = geometricCommand.getElementsByTagName("output").item(0).getAttributes().getLength();
+//                                int lengthInputCommand = geometricCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
 //                                // int test = 0;
 //                                for (int z = 0; z < lengthOutputCommand; z++) {
-//                                    //String polygonOutputPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(z).getNodeValue();
-//                                    String polyName = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
-//                                    if (polygonCommand.getAttribute("name").equals("Polygon")) {
+//                                    //String polygonOutputPoints = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(z).getNodeValue();
+//                                    String polyName = geometricCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
+//                                    if (geometricCommand.getAttribute("name").equals("Polygon")) {
 //                                        for (int e = 0; e < lengthInputCommand; e++) {
-//                                            String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
+//                                            String polyPoints = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
 //                                            //System.out.println(polyPoints);
 //                                            if (polyPoints.contains(label)) {
 //                                                polyType = "Polygon";
@@ -331,11 +326,11 @@ public class FileIO {
 //                                                break;
 //                                            }
 //                                        }
-//                                    } else if (polygonCommand.getAttribute("name").equals("Segment")) {
+//                                    } else if (geometricCommand.getAttribute("name").equals("Segment")) {
 //                                        //System.out.println("label data "+ label);
 //                                        for (int e = 0; e < lengthInputCommand; e++) {
-//                                            String polyPoints = polygonCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
-//                                            String polyNameD = polygonCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
+//                                            String polyPoints = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
+//                                            String polyNameD = geometricCommand.getElementsByTagName("output").item(0).getAttributes().item(0).getNodeValue();
 //                                            if (polyPoints.contains(label)) {
 //                                                //System.out.println(label);
 //                                                polyType = polyType.equals("Polygon") ? "Polygon" : "Segment";
