@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <geogebra format="5.0" version="5.0.779.0" app="suite" subApp="geometry" platform="w" id="14ec2259-9218-498c-8b9c-f762d63e3902"  xsi:noNamespaceSchemaLocation="http://www.geogebra.org/apps/xsd/ggb.xsd" xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 <gui>
-	<window width="1920" height="880" />
+	<window width="1512" height="684" />
 	<perspectives>
 <perspective id="tmp">
 	<panes>
-		<pane location="" divider="0.28541666666666665" orientation="1" />
+		<pane location="" divider="0.36507936507936506" orientation="1" />
 	</panes>
 	<views>
 		<view id="4097" visible="false" inframe="false" stylebar="true" location="1,1,1,1" size="400" window="100,100,700,550" />
 		<view id="512" toolbar="0 | 1 501 5 19 , 67 | 2 15 45 18 , 7 37 | 514 3 9 , 13 44 , 47 | 16 51 | 551 550 11 ,  20 22 21 23 , 55 56 57 , 12 | 69 | 510 511 , 512 513 | 533 531 , 534 532 , 522 523 , 537 536 , 535 , 538 | 521 520 | 36 , 38 49 560 | 571 30 29 570 31 33 | 17 | 540 40 41 42 , 27 28 35 , 6 , 502" visible="false" inframe="false" stylebar="false" location="1,1,1" size="500" window="100,100,600,400" />
 		<view id="4" toolbar="0 || 2020 , 2021 , 2022 || 2001 , 2003 , 2002 , 2004 , 2005 || 2040 , 2041 , 2042 , 2044 , 2043" visible="false" inframe="false" stylebar="false" location="1,1" size="300" window="100,100,600,400" />
 		<view id="8" toolbar="1001 | 1002 | 1003  || 1005 | 1004 || 1006 | 1007 | 1010 || 1008 | 1009 || 6" visible="false" inframe="false" stylebar="false" location="1,3" size="300" window="100,100,600,400" />
-		<view id="1" visible="true" inframe="false" stylebar="false" location="1" size="1356" window="100,100,600,400" />
-		<view id="2" visible="true" inframe="false" stylebar="false" location="3" size="548" tab="TOOLS" window="100,100,250,400" />
+		<view id="1" visible="true" inframe="false" stylebar="false" location="1" size="944" window="100,100,600,400" />
+		<view id="2" visible="true" inframe="false" stylebar="false" location="3" size="552" tab="TOOLS" window="100,100,250,400" />
 		<view id="16" visible="false" inframe="false" stylebar="false" location="1" size="300" window="50,50,500,500" />
 		<view id="32" visible="false" inframe="false" stylebar="true" location="1" size="300" window="50,50,500,500" />
 		<view id="64" visible="false" inframe="false" stylebar="false" location="1" size="480" window="50,50,500,500" />
@@ -30,7 +30,7 @@
 </gui>
 <euclidianView>
 	<viewNumber viewNo="1"/>
-	<size  width="1356" height="880"/>
+	<size  width="944" height="684"/>
 	<coordSystem xZero="255.16820794782495" yZero="597.2937063568675" scale="0.6165877303407155" yscale="0.6165877303407128"/>
 	<evSettings axes="true" grid="true" gridIsBold="false" pointCapturing="3" rightAngleStyle="1" checkboxSize="26" gridType="0"/>
 	<bgColor r="255" g="255" b="255"/>
@@ -420,6 +420,43 @@
 	<pointSize val="5"/>
 	<pointStyle val="0"/>
 	<coords x="1008.5049725341792" y="636.2333972167993" z="1"/>
+</element>
+<element type="point" label="Q">
+	<show object="true" label="true"/>
+	<objColor r="21" g="101" b="192" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<animation step="0.1" speed="1" type="1" playing="false"/>
+	<pointSize val="5"/>
+	<pointStyle val="0"/>
+	<coords x="500" y="500" z="1"/>
+</element>
+<element type="point" label="R">
+	<show object="true" label="true"/>
+	<objColor r="21" g="101" b="192" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<animation step="0.1" speed="1" type="1" playing="false"/>
+	<pointSize val="5"/>
+	<pointStyle val="0"/>
+	<coords x="499.2505963134762" y="84.81146118164095" z="1"/>
+</element>
+<command name="Segment">
+	<input a0="Q" a1="R"/>
+	<output a0="n"/>
+</command>
+<element type="segment" label="n">
+	<show object="true" label="false"/>
+	<objColor r="0" g="0" b="0" alpha="0"/>
+	<layer val="0"/>
+	<labelMode val="0"/>
+	<lineStyle thickness="5" type="0" typeHidden="1" opacity="178"/>
+	<eqnStyle style="explicit"/>
+	<outlyingIntersections val="false"/>
+	<keepTypeOnTransform val="true"/>
+	<startStyle val="default"/>
+	<endStyle val="default"/>
+	<coords x="415.18853881835906" y="-0.7494036865238058" z="-207219.56756591762"/>
 </element>
 </construction>
 </geogebra>

@@ -15,6 +15,9 @@ public class MyPoint extends my_point{
 ////        System.out.println("x and y  " + xCordsPoint+" "+ yCordsPoint);
 //    }
     public String label = "";
+    MyPoint() {
+
+    }
     MyPoint(int x, int y) {
         super(x, y);
     }

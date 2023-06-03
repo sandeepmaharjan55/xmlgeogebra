@@ -119,6 +119,7 @@ public class AppPanel extends JPanel implements MouseListener {
         MyLine line;
         MyLine line1;
         for (int i = 0; i < myLineList.size(); i++) {
+            //System.out.println("my line list "+myLineList);
             line = myLineList.get(i);
             line.draw(g);
             //line.midPoint();
@@ -160,6 +161,7 @@ public class AppPanel extends JPanel implements MouseListener {
         FileIO f = new FileIO(fn);
         polygonList = f.read(fn);
         myLineList = f.readLine(fn);
+        myPointList = f.readPoint(fn);
         repaint();
     }
 
@@ -293,9 +295,6 @@ public class AppPanel extends JPanel implements MouseListener {
             }
             //add points
             if (cp.drawPoint.isSelected()) {
-//                if (myPointList.size() < (ind + 1)) {
-//                    myPointList.add(new MyPoint(x, y));
-//                }
                  myPointList.add(new MyPoint(x,y));
             }
 
