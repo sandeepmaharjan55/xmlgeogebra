@@ -80,7 +80,7 @@ public class AppPanel extends JPanel implements MouseListener {
             // Draw the vertices
             for (int j = 0; j < pp.xCords.size(); j++) {
                 g.fillOval(pp.xCords.get(j) - 2, pp.yCords.get(j) - 2, 4, 4);
-                g.drawString(pp.coordLabel.get(j), pp.xCords.get(j) - 10, pp.yCords.get(j) - 10);
+                //g.drawString(pp.coordLabel.get(j), pp.xCords.get(j) - 10, pp.yCords.get(j) - 10);
             }
             if (pp.xCords.size() >= 1) {
                 g.drawString("poly" + (i + 1) + "", pp.getCenterX() - 5, pp.getCenterY() + 5);
@@ -127,8 +127,8 @@ public class AppPanel extends JPanel implements MouseListener {
             for (int j = i+1; j < myLineList.size(); j++) {
                 line1 = myLineList.get(j);
                if(line1.Intersect(line) && line.complete && line1.complete) {
-                   System.out.println("intersects");
-                   System.out.println("" + i + " -> " + j);
+//                   System.out.println("intersects");
+//                   System.out.println("" + i + " -> " + j);
                    g.setColor(Color.red);
                    g.drawLine(line.get_P1().get_x(), line.get_P1().get_y(), line.get_P2().get_x(), line.get_P2().get_y());
                    g.setColor(Color.BLACK);
@@ -136,8 +136,11 @@ public class AppPanel extends JPanel implements MouseListener {
             }
 
             if(line.complete){
-                line.midPoint(g,line.mid_point().get_x(),line.mid_point().get_y());
-                g.drawString(df.format(line.length()), line.getCenterX()-10, line.getCenterY()-10);
+               if(cp.toggleMid.isSelected()) {
+                   line.midPoint(g, line.mid_point().get_x(), line.mid_point().get_y());
+
+               }
+                if(cp.toggleDistance.isSelected()) g.drawString(df.format(line.length()), line.getCenterX()-10, line.getCenterY()-10);
                 g.drawString("l " + (i+1) + "", line.getCenterX()+10, line.getCenterY()+10);
             }
 
@@ -283,7 +286,7 @@ public class AppPanel extends JPanel implements MouseListener {
                 if (polygonList.size() < ind + 1) {
                     polygonList.add(new MyPolygon());
                 }
-                polygonList.get(ind).addCoordLabel(ind+1);
+                //polygonList.get(ind).addCoordLabel(ind+1);
                 polygonList.get(ind).addPoint(x, y);
 
             }
@@ -319,6 +322,27 @@ public class AppPanel extends JPanel implements MouseListener {
 //        buildPolygon(g);
 //        g.drawRect(x, y, 2, 2);
     }
+
+
+//    public void actionDistMidPerformed(ActionEvent e) {
+//        MyLine line;
+//        if(cp.toggleMid.isSelected()){
+//
+//            for (int i = 0; i < myLineList.size(); i++) {
+//                if(lineD.complete){
+//                    if(cp.toggleMid.isSelected()) {
+//                        line.midPoint(g, line.mid_point().get_x(), line.mid_point().get_y());
+//
+//                    }
+//                    if(cp.toggleDistance.isSelected()) g.drawString(df.format(line.length()), line.getCenterX()-10, line.getCenterY()-10);
+//                    g.drawString("l " + (i+1) + "", line.getCenterX()+10, line.getCenterY()+10);
+//                }
+//            }
+//        }
+//        if(cp.toggleDistance.isSelected()){
+//
+//        }
+//    }
 
     @Override
     public void mousePressed(MouseEvent e) {

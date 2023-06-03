@@ -92,6 +92,8 @@ public class App extends JFrame{
         public JRadioButton drawPoint = new JRadioButton("Point");
         public JRadioButton drawLine = new JRadioButton("Line");
         public JRadioButton drawPolygon = new JRadioButton("Polygon");
+        public JCheckBox toggleMid = new JCheckBox("Show Midpoint");
+        public JCheckBox toggleDistance = new JCheckBox("Show Distance");
 
 
 
@@ -117,13 +119,12 @@ public class App extends JFrame{
 
             //deselect button here
             JButton deselectButton = new JButton("Deselect");
-//            deselectButton.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    group.clearSelection();
-//                }
-//            });
-            deselectButton.addActionListener(this::actionClear);
+            deselectButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    group.clearSelection();
+                }
+            });
             upPanel.add(deselectButton);
             upPanel.add(new JLabel("Select Geometry Collection "));
             upPanel.add(drawPoint);
@@ -134,15 +135,15 @@ public class App extends JFrame{
             //delete button here Select element and Geometry
             upPanel.add(new JLabel("Select element and Geometry"));
             JButton deleteButton = new JButton("Delete");
-//            deselectButton.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    group.clearSelection();
-//                }
-//            });
             deleteButton.addActionListener(this::actionDelete);
             upPanel.add(deleteButton);
+            upPanel.add(toggleMid);
+            upPanel.add(toggleDistance);
+            JButton distMidButton = new JButton("Calculate");
+            upPanel.add(distMidButton);
+
             // Add spaces in between fields
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
@@ -158,6 +159,7 @@ public class App extends JFrame{
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             upPanel.add(Box.createRigidArea(new Dimension(0,55)));
+            upPanel.add(Box.createRigidArea(new Dimension(0,55)));
             add(upPanel);
             setVisible(true);
         }
@@ -167,16 +169,7 @@ public class App extends JFrame{
 
         }
 
-
-//        private void actionDeselect(ActionEvent actionEvent) {
-//            System.out.println("m hahar");
-//            group.clearSelection();
-//
-//        }
-
         public void actionClear(ActionEvent e) {
-//            Graphics g = getGraphics();
-//            super.paint(g);
             panel.actionPerformed(e);
         }
 
@@ -208,3 +201,6 @@ public class App extends JFrame{
 // add button to find mid point of line
 //polygon perimeter and area
 // if line intersect represent it with red
+
+// june 1
+// use toggle checkbox to show midpoints and distances

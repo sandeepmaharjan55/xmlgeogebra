@@ -8,7 +8,7 @@ public class MyPolygon {
     private Polygon polygon;
     public ArrayList<Integer> xCords = new ArrayList<Integer>();
     public ArrayList<Integer> yCords = new ArrayList<Integer>();
-    public ArrayList<String> coordLabel = new ArrayList<String>();
+//    public ArrayList<String> coordLabel = new ArrayList<String>();
     private ArrayList<my_point> vertices = new ArrayList<my_point>();
     private ArrayList<segment> edges = new ArrayList<segment>();
 
@@ -39,19 +39,19 @@ public class MyPolygon {
             edges.add(new segment(vertices.get(vertices.size() - 2), newPoint)); // -2 because we need second last point
             edges.add(new segment(newPoint, vertices.get(0))); // add last edge that goes back to first point
         }
-        printEdges();
+        //printEdges();
     }
 
     private void printEdges() {
-        System.out.println(edges);
+        //System.out.println(edges);
         for (int i = 0; i < edges.size(); i++) {
             edges.get(i).print();
         }
     }
-    public void addCoordLabel(int x) {
-        coordLabel.add("po"+x+(xCords.size()+1));
-        //System.out.println("coord ind data"+ x);
-    }
+//    public void addCoordLabel(int x) {
+//        coordLabel.add("po"+x+(xCords.size()+1));
+//        //System.out.println("coord ind data"+ x);
+//    }
     public int getCenterX() {
         if(xCords.isEmpty()) { return 0; }
         int sum = xCords.stream().mapToInt(a -> a).sum();

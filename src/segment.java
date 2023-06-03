@@ -46,9 +46,6 @@ public class segment
         Target.update(x2, y2);
     }
 
-
-
-
     public double length()
     {
         return Source.distance(Target);
