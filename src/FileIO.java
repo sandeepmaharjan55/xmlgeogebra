@@ -42,7 +42,7 @@ public class FileIO {
     }
 
 
-    public void write(ArrayList<MyPolygon> polygonList, ArrayList<MyLine> myLineList) {
+    public void write(ArrayList<MyPolygon> polygonList, ArrayList<MyLine> myLineList,ArrayList<MyPoint> myPointList) {
         try {
             File inputFile = new File(System.getProperty("user.dir") + "/Geogebra/templateFile/" + filename);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -58,7 +58,7 @@ public class FileIO {
                     //element tag start
                     Element newElement = document.createElement("element");
                     newElement.setAttribute("type", "point");
-                    newElement.setAttribute("label", "A" +p.xCords.get(j)+p.yCords.get(j));
+                    newElement.setAttribute("label", "A" + p.xCords.get(j) + p.yCords.get(j));
 
                     //show
                     Element newShow = document.createElement("show");
@@ -231,7 +231,61 @@ public class FileIO {
                 (root.getElementsByTagName("construction").item(0)).appendChild(newCommand);
                 System.out.println("p x " + p.get_P1().get_x() + " y " + p.get_P1().get_y());
             }
+            //myPointlist
+            for (int i = 0; i < myPointList.size(); i++) {
+                MyPoint p = myPointList.get(i);
+                //System.out.println("p value "+p.get_x());
 
+                    Element newElementLine = document.createElement("element");
+                    newElementLine.setAttribute("type", "point");
+                    newElementLine.setAttribute("label", "P" + p.get_x()+p.get_y());
+
+                    //show
+                    Element newShow = document.createElement("show");
+                    newShow.setAttribute("object", "true");
+                    newShow.setAttribute("label", "true");
+                    newElementLine.appendChild(newShow);
+
+                    //objColor
+                    Element objColor = document.createElement("objColor");
+                    objColor.setAttribute("r", "21");
+                    objColor.setAttribute("g", "101");
+                    objColor.setAttribute("b", "192");
+                    objColor.setAttribute("alpha", "0");
+                    newElementLine.appendChild(objColor);
+                    //layer
+                    Element layer = document.createElement("layer");
+                    layer.setAttribute("val", "0");
+                    newElementLine.appendChild(layer);
+                    //labelMode
+                    Element labelMode = document.createElement("labelMode");
+                    labelMode.setAttribute("val", "0");
+                    newElementLine.appendChild(labelMode);
+
+                    //animation
+                    Element animation = document.createElement("animation");
+                    animation.setAttribute("step", "0.1");
+                    animation.setAttribute("speed", "1");
+                    animation.setAttribute("type", "1");
+                    animation.setAttribute("playing", "false");
+                    newElementLine.appendChild(animation);
+                    //pointSize
+                    Element pointSize = document.createElement("pointSize");
+                    pointSize.setAttribute("val", "5");
+                    newElementLine.appendChild(pointSize);
+                    //pointStyle
+                    Element pointStyle = document.createElement("pointStyle");
+                    pointStyle.setAttribute("val", "0");
+                    newElementLine.appendChild(pointStyle);
+
+                        Element newCoords = document.createElement("coords");
+                        newCoords.setAttribute("x", String.valueOf(p.get_x()));
+                        newCoords.setAttribute("y", String.valueOf(720 - p.get_y()));
+                        newCoords.setAttribute("z", "1");
+                        newElementLine.appendChild(newCoords);
+
+                    (root.getElementsByTagName("construction").item(0)).appendChild(newElementLine);
+            }
             // Saving changes to a new XML file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -480,31 +534,40 @@ public class FileIO {
                     Element geometricCommand = ((Element) commandPol.item(k));
                     int lengthInputCommand = geometricCommand.getElementsByTagName("input").item(0).getAttributes().getLength();
                     if (geometricCommand.getAttribute("name").equals("Polygon")) {
+
                         for (int e = 0; e < lengthInputCommand; e++) {
+                            //System.out.println("length input length "+lengthInputCommand);
                             String polyPoints = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(e).getNodeValue();
                             NodeList elems = ((Element) nodeList.item(i)).getElementsByTagName("element");
                             // System.out.println("elemtnts length " + elems.getLength());
+
                             for (int j = 0; j < elems.getLength(); j++) {
+                                //System.out.println("elems length "+elems.getLength());
                                 Element polygonElement = ((Element) elems.item(j));
                                 String label = polygonElement.getAttribute("label");
                                 String pointElement = polygonElement.getAttribute("type");
                                 // System.out.println("ploypoint and label  " + polyPoints + " " + label);
+
                                 if (polyPoints.equals(label) && pointElement.equals("point")) {
                                     //System.out.println("count");
                                     String xCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(0).getNodeValue();
                                     String yCoordinate = polygonElement.getElementsByTagName("coords").item(0).getAttributes().item(1).getNodeValue();
                                     p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
                                     String polyEndPointLabel = geometricCommand.getElementsByTagName("input").item(0).getAttributes().item(lengthInputCommand - 1).getNodeValue();
-                                    if (polyPoints.equals(polyEndPointLabel)) {
-                                        p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
+
+                                    if (polyEndPointLabel.equals(polyPoints)) {
+                                        System.out.println("poly end label "+polyEndPointLabel+" "+polyPoints);
+                                        //p.addPoint((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
                                         polygonList.add(p);
                                         p = new MyPolygon((int) (Float.parseFloat(xCoordinate)), (720 - (int) (Float.parseFloat(yCoordinate))));
                                         p.xCords.remove(0);
                                         p.yCords.remove(0);
+
                                         break;
                                     }
                                     break;
                                 }
+
                             }
                         }
                     }
@@ -515,7 +578,7 @@ public class FileIO {
             System.out.println(e);
         }
 
-        //System.out.println("polygon list " + polygonList);
+        System.out.println("polygon list " + polygonList);
         return polygonList;
     }
 
@@ -581,7 +644,7 @@ public class FileIO {
         }
 
         //System.out.println("polygon list " + polygonList);
-        System.out.println("mula saag "+myLineList.get(0).get_P1().get_x());
+       // System.out.println("mula saag "+myLineList.get(0).get_P1().get_x());
         return myLineList;
     }
 

@@ -71,6 +71,7 @@ public class AppPanel extends JPanel implements MouseListener {
         MyPolygon pp;
         for (int i = 0; i < polygonList.size(); i++) {
             pp = polygonList.get(i);
+            //System.out.println("polyfon list"+polygonList);
             g.drawPolygon(pp.getPolygon());
             // fill the polygon
             g.setColor(Color.CYAN);
@@ -83,6 +84,7 @@ public class AppPanel extends JPanel implements MouseListener {
                 //g.drawString(pp.coordLabel.get(j), pp.xCords.get(j) - 10, pp.yCords.get(j) - 10);
             }
             if (pp.xCords.size() >= 1) {
+                //System.out.println("polygon X coords "+ pp.xCords);
                 g.drawString("poly" + (i + 1) + "", pp.getCenterX() - 5, pp.getCenterY() + 5);
                 cp.textboxUnclick.setText("Polygon " + (i + 1) + " being drawn.");
             }
@@ -152,7 +154,7 @@ public class AppPanel extends JPanel implements MouseListener {
 
     public void saveData(String fn) {
         FileIO f = new FileIO(fn);
-        f.write(polygonList,myLineList);
+        f.write(polygonList,myLineList,myPointList);
         //f.writePoint(myPointList);
         // f.writeTwo(myPointList);
         System.out.println("Data Saved");
