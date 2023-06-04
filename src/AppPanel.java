@@ -152,14 +152,15 @@ public class AppPanel extends JPanel implements MouseListener {
 
     public void saveData(String fn) {
         FileIO f = new FileIO(fn);
-        f.write(polygonList);
+        f.write(polygonList,myLineList);
+        //f.writePoint(myPointList);
         // f.writeTwo(myPointList);
         System.out.println("Data Saved");
     }
 
     public void readData(String fn) {
         FileIO f = new FileIO(fn);
-        polygonList = f.read(fn);
+        polygonList = f.readPolygon(fn);
         myLineList = f.readLine(fn);
         myPointList = f.readPoint(fn);
         repaint();

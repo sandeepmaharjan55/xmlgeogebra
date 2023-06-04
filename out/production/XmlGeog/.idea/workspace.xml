@@ -3,20 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="849b7b5a-34c9-4c85-8d39-371ac8a14468" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geogebra/geogebra.ggb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Geogebra/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Geogebra/geogebra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.ggb" beforeDir="false" afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.ggb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/geogebra.ggb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/geogebra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.ggb" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.ggb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyPolygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPolygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/segment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,21 +42,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/sandeepmaharjan/Desktop/Thesis work/XmlGeog/src&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/sandeepmaharjan/Desktop/Thesis work/XmlGeog/Geogebra",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/Geogebra" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/Geogebra/templateFile" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -134,6 +126,17 @@
         <entry key="bcd6270e-5c1b-4203-903d-c174de2d3343" value="TOOL_WINDOW" />
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/FileIOCopy.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/XmlGeog$App.ic" NAME="App Coverage Results" MODIFIED="1684951803445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
