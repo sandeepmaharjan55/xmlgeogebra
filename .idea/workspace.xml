@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="849b7b5a-34c9-4c85-8d39-371ac8a14468" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.ggb" beforeDir="false" afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.ggb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Geogebra/savedFile/geogebra.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/Geogebra/savedFile/geogebra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XmlGeog/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XmlGeog/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

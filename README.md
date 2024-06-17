@@ -2,6 +2,11 @@
 A Java project to add points, lines, and polygons on a 2D plane, which can read and write GeoGebra.org files.
 
 ## Java Application Output:
+### Output Video Link below:
+
+https://www.loom.com/share/e632a35d4cae40109bbc05130599ccfc?sid=1631019d-17bf-44f1-b14e-aa46a746cd43
+
+Panel Information:
 1. Select Element
 To select the 2D drawn element.
 2. Select Geometry Collection
