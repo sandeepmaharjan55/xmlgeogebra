@@ -6,13 +6,16 @@ A Java project to add points, lines, and polygons on a 2D plane, which can read 
 
 https://www.loom.com/share/e632a35d4cae40109bbc05130599ccfc?sid=1631019d-17bf-44f1-b14e-aa46a746cd43
 
-Panel Information:
-1. Select Element
-To select the 2D drawn element.
-2. Select Geometry Collection
-To select the geometric figures point, line and polygon.
-3. Select element and Geometry
-To select element to delete.
+## Interface Design
+The main window of the application is built with JFrame object from the Java Swing API. The interface is divided into 3 distinct regions:
+1. Menu Bar (Top) : File read and write
+2. Drawing Canvas (Center): Draw/Delete/Clear points, lines and polygon
+3. Control Panel (Left)
+
+### Control Panel:
+1. Select Element : To select the 2D drawn element.
+2. Select Geometry Collection: To select the geometric figures point, line and polygon.
+3. Select element and Geometry: To select element to delete.
 ## Checkboxes:
 1. Show midpoint: To show the midpoint of the lines.
 2. Show distance: To show the distance of the line
